@@ -7,4 +7,4 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Issue Tracker API")
 
-app.include_router(issues.router, prefix="/issues", tags=["issues"])
+app.include_router(issues.router)
