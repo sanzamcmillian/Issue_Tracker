@@ -18,6 +18,7 @@ The project allows users to create, view, update, delete, search, filter, and so
 - Searching by title
 - Sorting by creation date or priority
 - API tested with Pytest
+- Continous Integration with GitHub Actions
 
 ### Frontend (React)
 
