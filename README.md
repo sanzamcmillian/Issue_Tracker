@@ -30,8 +30,10 @@ The project allows users to create, view, update, delete, search, filter, and so
 - Dynamic chart showing issues grouped by status
 - CRUD operations fuly integrated with backend
 
+---
 ## Live link
 
+[Issue Tracker](https://issue-tracker-cx90.onrender.com)
 ---
 
 ## Author 
