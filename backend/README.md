@@ -161,7 +161,6 @@ pip install pytest httpx pytest-asyncio requests
 ```bash
 
 PYTHONPATH=$(pwd) pytest -v
-
 ```
 
 3. Tests cover:
