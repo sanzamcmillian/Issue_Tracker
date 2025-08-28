@@ -57,3 +57,7 @@ Open your browser and navigate to: http://localhost:5173
   - PUT /:id Update an issue
   - DELETE /:id Delete an issue
 - Filters, sorting, and search are supported via query parameters
+
+---
+## Author
+Sanele Skhosana
