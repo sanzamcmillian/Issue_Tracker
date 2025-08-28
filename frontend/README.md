@@ -1,12 +1,59 @@
-# React + Vite
+## Issue Tracker Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend for the Issue Tracker application, built with React, Chakra UI, and React Router. It connects to a FastAPI backend to provide full CRUD functionality for managing issues
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- Dashboard displaying all issues with dynamic filters, sorting, and search.
+- Create, View, Edit, and Delete issues.
+- Dynamic Pie Chart showing issue statuses (Open, In Progress, Closed) that updates automatically with CRUD operations.
+- Responsive and mobile-friendly UI with Chakra UI.
+- Client-side routing with React Router.
+- Clean and maintainable component-based architecture.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Technologies Used
+
+- Frontend: React, React Router, Chakra UI, Axios, Recharts
+- Styling: Chakra UI components and layout utilities
+- Charts: Recharts for dynamic visualization
+- HTTP Client: Axios for API requests
+- State Management: React useState and useEffect hooks
+
+---
+
+## Getting Started
+
+1. Clone the repository
+```bash
+
+git clone https://github.com/sanzamcmillian/Issue_Tracker.git
+cd Issue_Tracker/frontend
+```
+2. Install dependencies
+```bash
+
+npm install
+```
+3. Start the development server
+```bash
+
+npm run dev
+```
+4. Access the app
+```text
+Open your browser and navigate to: http://localhost:5173
+```
+
+---
+## API Integration
+- Base URL: http://localhost:8000/api/v1/issues
+- CRUD operations
+  - GET / List all issues
+  - GET /:id View issue details
+  - POST / Create new issue
+  - PUT /:id Update an issue
+  - DELETE /:id Delete an issue
+- Filters, sorting, and search are supported via query parameters
