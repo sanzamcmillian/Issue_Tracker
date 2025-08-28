@@ -22,6 +22,7 @@ import {
   Select,
   Input,
 } from "@chakra-ui/react";
+import StatusChart from "../components/StatusChart";
 
 export default function Home() {
   const [issues, setIssues] = useState([]);
@@ -95,6 +96,9 @@ export default function Home() {
         <Heading as="h1" size="2xl" mb={6} textAlign="center" color="teal.500">
             Issue Tracker
         </Heading>
+        <Box mb={6}>
+            <StatusChart issues={filteredIssues} />
+        </Box>
         <Stack direction={["column", "row"]} spacing={4} mb={4}>
             <Select
                 placeholder="Filter by Status"
