@@ -1,7 +1,6 @@
-// src/pages/CreateIssue.jsx
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { createIssue } from "../api/issues";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { getIssue, updateIssue } from "../api/issues";
 import {
   Box,
   Button,
@@ -11,49 +10,78 @@ import {
   Select,
   Textarea,
   Heading,
+  Spinner,
   useToast,
 } from "@chakra-ui/react";
 
-export default function CreateIssue() {
+export default function EditIssue() {
+  const { id } = useParams();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [status, setStatus] = useState("open");
   const [priority, setPriority] = useState("medium");
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
 
   const toast = useToast();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const fetchIssue = async () => {
+      try {
+        const data = await getIssue(id);
+        setTitle(data.title);
+        setDescription(data.description);
+        setStatus(data.status);
+        setPriority(data.priority);
+      } catch (error) {
+        toast({
+          title: "Error",
+          description: "Failed to load issue.",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchIssue();
+  }, [id]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setSaving(true);
 
     try {
-      await createIssue({ title, description, status, priority });
+      await updateIssue(id, { title, description, status, priority });
       toast({
-        title: "Issue created.",
-        description: "Your issue has been added successfully.",
+        title: "Issue updated",
+        description: "Your issue has been updated successfully.",
         status: "success",
         duration: 3000,
         isClosable: true,
       });
-      navigate("/"); // redirect back to dashboard
+      navigate("/");
     } catch (error) {
       toast({
         title: "Error",
-        description: "Failed to create issue.",
+        description: "Failed to update issue.",
         status: "error",
         duration: 3000,
         isClosable: true,
       });
     } finally {
-      setLoading(false);
+      setSaving(false);
     }
   };
 
+  if (loading) return <Spinner size="xl" />;
+
   return (
     <Box p={6} maxW="lg" mx="auto">
-      <Heading mb={6}>Create New Issue</Heading>
+      <Heading mb={6}>Edit Issue</Heading>
       <form onSubmit={handleSubmit}>
         <FormControl mb={4} isRequired>
           <FormLabel>Title</FormLabel>
@@ -89,8 +117,8 @@ export default function CreateIssue() {
           </Select>
         </FormControl>
 
-        <Button type="submit" colorScheme="blue" isLoading={loading}>
-          Create Issue
+        <Button type="submit" colorScheme="green" isLoading={saving}>
+          Update Issue
         </Button>
       </form>
     </Box>
