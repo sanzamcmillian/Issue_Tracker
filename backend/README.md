@@ -148,7 +148,7 @@ Error Response: 404 if issue not found
 
 ---
 
-Testing
+## Testing
 
 1. Install test dependencies
 ```bash
@@ -169,3 +169,7 @@ PYTHONPATH=$(pwd) pytest -v
 - Input validation
 - sorting & filtering
 - Error handling
+
+---
+## Author
+Sanele Skhosana
