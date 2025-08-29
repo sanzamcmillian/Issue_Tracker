@@ -100,6 +100,12 @@ export default function Home() {
             <StatusChart issues={filteredIssues} />
         </Box>
         <Stack direction={["column", "row"]} spacing={4} mb={4}>
+            <Input
+                placeholder="Search by title..."
+                value={searchQuery}
+                onChange={(e) => setQuerySearch(e.target.value)}
+            />
+
             <Select
                 placeholder="Filter by Status"
                 value={statusFilter}
@@ -126,11 +132,6 @@ export default function Home() {
                 <option value="priority">Sort by Priority</option>
             </Select>
 
-            <Input
-                placeholder="Search by title..."
-                value={searchQuery}
-                onChange={(e) => setQuerySearch(e.target.value)}
-            />
         </Stack>
 
         <Button colorScheme="teal" mb={4} as={RouterLink} to="/create" mt={["2", "0"]}>
