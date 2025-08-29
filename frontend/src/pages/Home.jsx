@@ -150,7 +150,7 @@ export default function Home() {
                     <Th>Title</Th>
                     <Th>Status</Th>
                     <Th>Priority</Th>
-                    <Th>{sortBy === "created" ? "Created Date": "Updated Date"}</Th>
+                    <Th>{sortBy === "created_at" ? "Created Date": "Updated Date"}</Th>
                     <Th>Actions</Th>
                 </Tr>
             </Thead>
