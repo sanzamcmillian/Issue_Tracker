@@ -23,6 +23,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 import StatusChart from "../components/StatusChart";
+import { statusLabels } from "../utilities/statusLabels";
 
 export default function Home() {
   const [issues, setIssues] = useState([]);
@@ -155,7 +156,7 @@ export default function Home() {
                 {filteredIssues.map((issue) => (
                     <Tr key={issue.id}>
                         <Td>{issue.title}</Td>
-                        <Td>{issue.status}</Td>
+                        <Td>{statusLabels(issue.status)}</Td>
                         <Td>{issue.priority}</Td>
                     <Td>
                         <Stack direction="row" spacing={2}>
