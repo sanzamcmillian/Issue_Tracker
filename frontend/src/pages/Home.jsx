@@ -1,4 +1,4 @@
-// src/pages/Home.jsx
+
 import { use, useEffect, useState } from "react";
 import { getIssues, deleteIssue } from "../api/issues";
 import { Link as RouterLink } from "react-router-dom";
@@ -24,6 +24,7 @@ import {
 } from "@chakra-ui/react";
 import StatusChart from "../components/StatusChart";
 import { statusLabels } from "../utilities/statusLabels";
+import { formatDate } from "../utilities/formatDate";
 
 export default function Home() {
   const [issues, setIssues] = useState([]);
@@ -149,6 +150,7 @@ export default function Home() {
                     <Th>Title</Th>
                     <Th>Status</Th>
                     <Th>Priority</Th>
+                    <Th>{sortBy === "created" ? "Created Date": "Updated Date"}</Th>
                     <Th>Actions</Th>
                 </Tr>
             </Thead>
@@ -158,6 +160,7 @@ export default function Home() {
                         <Td>{issue.title}</Td>
                         <Td>{statusLabels(issue.status)}</Td>
                         <Td>{issue.priority}</Td>
+                        <Td>{sortBy === "created_at" ? formatDate(issue.created_at) : formatDate(issue.updated_at)}</Td>
                     <Td>
                         <Stack direction="row" spacing={2}>
                             <Button size="sm" colorScheme="blue" as={RouterLink} to={`/issues/${issue.id}`}>
