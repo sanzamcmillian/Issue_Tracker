@@ -11,6 +11,7 @@ idna
 iniconfig
 packaging
 pluggy
+psycopg2-binary
 pydantic
 pydantic-settings
 pydantic_core

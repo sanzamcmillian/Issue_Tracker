@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: issuetracker
+      POSTGRES_PASSWORD: localdevpassword
+      POSTGRES_DB: issue_tracker
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U issuetracker -d issue_tracker"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      # Same format you'll use for RDS later:
+      # postgresql+psycopg2://<user>:<password>@<host>:5432/<dbname>
+      DATABASE_URL: postgresql+psycopg2://issuetracker:localdevpassword@db:5432/issue_tracker
+      DEBUG: "false"
+    ports:
+      - "8000:8000"
+
+volumes:
+  pgdata:
