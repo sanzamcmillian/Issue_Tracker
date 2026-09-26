@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "https://issue-tracker-08z7.onrender.com/";
+const API_BASE_URL = "issue-tracker-alb-771606233.af-south-1.elb.amazonaws.com/";
 
 export const getIssues = async (params = {}) => {
     try {
