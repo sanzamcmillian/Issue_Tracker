@@ -170,6 +170,9 @@ PYTHONPATH=$(pwd) pytest -v
 - Error handling
 
 ---
+## AWS-Live-API
+issue-tracker-alb-771606233.af-south-1.elb.amazonaws.com/
+
 ## Live link
 https://issue-tracker-08z7.onrender.com
 
