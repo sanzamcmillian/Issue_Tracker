@@ -31,6 +31,8 @@ The project allows users to create, view, update, delete, search, filter, and so
 - CRUD operations fuly integrated with backend
 
 ---
+## Tech
+
 ## Live link
 
 [Issue Tracker](https://issue-tracker-cx90.onrender.com)
